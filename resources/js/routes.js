@@ -1,7 +1,6 @@
 import VueRouter from 'vue-router';
-import ExampleComponent from './components/ExampleComponent';
-import TestComponent from './components/TestComponent'
 import Bookables from './bookables/Bookables'
+import Bookable from './bookable/Bookable'
 
 const routes = [
     {
@@ -10,10 +9,9 @@ const routes = [
         name: 'home'
     },
     {
-        path: '/test',
-        component: TestComponent,
-        name: 'test'
-
+        path: "/bookable/:id",
+        component: Bookable,
+        name: 'bookable'
     }
 ]
 

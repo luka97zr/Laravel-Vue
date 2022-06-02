@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Bookable as ControllersBookable;
+use App\Models\Bookable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('bookables', [ControllersBookable::class,'index']);
+
+Route::get('bookables/{id}', [ControllersBookable::class,'find']);

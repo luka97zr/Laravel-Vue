@@ -1,8 +1,9 @@
 <template>
-  <div class="card">
+  <div class="card w-100">
     <div class="card-body">
       <h5 class="card-title">{{title}}</h5>
-      <p class="card-text">{{content}}</p>
+      <p class="card-text">{{description}}</p>
+      <router-link :to="'/bookable/' + id">{{title}}</router-link>
     </div>
   </div>
 </template>
@@ -11,8 +12,9 @@
 export default {
   props: {
     'title': String,
-    'content': String,
-    'price': Number
+    'description': String,
+    'price': Number,
+    'id' : Number
   },
 
 }
