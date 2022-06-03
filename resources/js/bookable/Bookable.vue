@@ -1,7 +1,18 @@
 <template>
-    <div>
-        <div v-if="!bookable">Loading</div>
-        <div v-else>{{bookable.title}}</div>
+    <div class="row">
+        <div class="col-md-8">
+            <div v-if="bookable" class="card">
+                <div class="card-body">
+                    <div v-if="!loading">
+                        <h2>{{bookable.title}}</h2>
+                        <hr>
+                        <article>{{bookable.description}}</article>
+                    </div>
+                    <div v-else>Loading...</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">availability & prices</div>
     </div>
 </template>
 
@@ -9,14 +20,16 @@
 export default {
     data() {
         return {
-            bookable: null
+            bookable: null,
+            loading: false
         }
     },
     created() {
-        console.log(this.$route.params.id)
+        // console.log(this.$route.params.id)
+        this.loading = true
         const request = axios.get(`/api/bookables/${this.$route.params.id}`).then(response => {
             this.bookable = response.data
-                console.log(this.bookable)
+            this.loading = false
             })
     }
 }

@@ -5375,19 +5375,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      bookable: null
+      bookable: null,
+      loading: false
     };
   },
   created: function created() {
     var _this = this;
 
-    console.log(this.$route.params.id);
+    // console.log(this.$route.params.id)
+    this.loading = true;
     var request = axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (response) {
       _this.bookable = response.data;
-      console.log(_this.bookable);
+      _this.loading = false;
     });
   }
 });
@@ -5470,6 +5483,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -28322,10 +28336,26 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    !_vm.bookable
-      ? _c("div", [_vm._v("Loading")])
-      : _c("div", [_vm._v(_vm._s(_vm.bookable.title))]),
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-8" }, [
+      _vm.bookable
+        ? _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              !_vm.loading
+                ? _c("div", [
+                    _c("h2", [_vm._v(_vm._s(_vm.bookable.title))]),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("article", [_vm._v(_vm._s(_vm.bookable.description))]),
+                  ])
+                : _c("div", [_vm._v("Loading...")]),
+            ]),
+          ])
+        : _vm._e(),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-4" }, [_vm._v("availability & prices")]),
   ])
 }
 var staticRenderFns = []
@@ -28424,14 +28454,14 @@ var render = function () {
       "div",
       { staticClass: "card-body" },
       [
-        _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
+        _c(
+          "router-link",
+          { attrs: { to: { name: "bookable", params: { id: _vm.id } } } },
+          [_c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))])]
+        ),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
           _vm._v(_vm._s(_vm.description)),
-        ]),
-        _vm._v(" "),
-        _c("router-link", { attrs: { to: "/bookable/" + _vm.id } }, [
-          _vm._v(_vm._s(_vm.title)),
         ]),
       ],
       1
