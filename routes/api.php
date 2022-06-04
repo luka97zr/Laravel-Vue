@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('bookables', [ControllersBookable::class,'index']);
 
 Route::get('bookables/{id}', [ControllersBookable::class,'show']);
+
