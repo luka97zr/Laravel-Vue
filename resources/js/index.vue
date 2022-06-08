@@ -10,18 +10,6 @@
                     <!-- <span v-if="itemsInBasket" class="badge badge-secondary">{{ itemsInBasket }}</span> -->
                 </router-link>
                 </li>
-
-                <!-- <li class="nav-item" v-if="!isLoggedIn">
-                <router-link :to="{name: 'register'}" class="nav-link">Register</router-link>
-                </li>
-
-                <li class="nav-item" v-if="!isLoggedIn">
-                <router-link :to="{name: 'login'}" class="nav-link">Sign-in</router-link>
-                </li>
-
-                <li class="nav-item" v-if="isLoggedIn">
-                <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
-                </li> -->
             </ul>
         </nav>
         <div class="container mt-4 mb-4 pr-4 pl-4">
